@@ -56,11 +56,11 @@ function WhoWhins() {
 
     if (computerScore >= 3) {
 
-        console.log("O computador ganhou a co,+");
+        console.log("O computador ganhou a competição");
     }
 
     else if (userScore >= 3) {
-        console.log(" O humano ganhou a comp");
+        console.log(" O humano ganhou a competição");
     }
     else {
 
