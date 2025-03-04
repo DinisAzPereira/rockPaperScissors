@@ -11,23 +11,13 @@ function getComputerChoice() {
 
 // console.log(getComputerChoice()); // Para ver o resultado no console
 
-function getHumanChoice() {
-  let choice = prompt("Rock,Paper ou Scissors?").toLowerCase();
 
-  if (choice === "rock") return choice;
-  if (choice === "paper") return choice;
-  if (choice === "scissors") return choice;
-  else {
-    console.log("Invalid response");
-    getHumanChoice();
-  }
 
-  return choice;
-}
-
-function playRound(choice,) {
+function playRound(choice) {
   const computerSelection = getComputerChoice();
 
+
+  
   if (
     (choice === "rock" && computerSelection === "scissors") ||
     (choice === "scissors" && computerSelection === "paper") ||
@@ -40,37 +30,63 @@ function playRound(choice,) {
     computerScore++;
   }
 
-  console.log(
-    `Computer score: ${computerScore}, and Human score: ${userScore}`
-  );
-}
+    const h4resultadosJogador = document.getElementById('h4resultadosJogador')
+    h4resultadosJogador.innerText = `Resultado do jogador: ${userScore}`
+    const h4resultadosComputador = document.getElementById('h4resultadosComputador')
+    h4resultadosComputador.innerText = `Resultado do computador: ${computerScore}`
 
-function playGame() {
-  const humanSelection = getHumanChoice();
-  const computerSelection = getComputerChoice();
-
-  playRound(humanSelection, computerSelection);
+  
 }
 
 function WhoWhins() {
 
-    if (computerScore >= 3) {
+  if (computerScore >= 3) {
+    computerScore = 0;
+    userScore = 0;
+    alert("O computador ganhou a competição");
+    document.getElementById('h4resultadosJogador').innerText = `Resultado do jogador: ${userScore}`;
+    document.getElementById('h4resultadosComputador').innerText = `Resultado do computador: ${computerScore}`;
 
-        console.log("O computador ganhou a competição");
-    }
+ 
 
-    else if (userScore >= 3) {
-        console.log(" O humano ganhou a competição");
-    }
-    else {
+  }
 
-        console.log("erro ao  determinar pontuações");
-    }
+  else if (userScore >= 3) {
+    computerScore = 0;
+    userScore = 0;
+    alert(" O humano ganhou a competição");
+    document.getElementById('h4resultadosJogador').innerText = `Resultado do jogador: ${userScore}`;
+    document.getElementById('h4resultadosComputador').innerText = `Resultado do computador: ${computerScore}`;
+
+
+
+  }
+  else {
+
+      console.log("erro ao  determinar pontuações");
+  }
 }
 
-playGame();
-playGame();
-playGame();
-playGame();
-playGame();
-WhoWhins();
+
+const rock = document.querySelector("#rockBtn");
+const paper = document.querySelector("#paperBtn");
+const scissors = document.querySelector("#scissorsBtn");
+
+rock.addEventListener("click", () => {
+  playRound("rock");
+  WhoWhins()
+})
+
+paper.addEventListener("click", () => {
+  playRound("paper");
+  WhoWhins()
+})
+
+scissors.addEventListener("click", () => {
+  playRound("scissors");
+  WhoWhins()
+
+})
+
+
+
